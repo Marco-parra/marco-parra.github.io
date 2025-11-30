@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SPARQL Query Interface</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .header {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 15px;
+        color: black;
+        width: 100%;
+        background-color: white;
+        text-align: center;
+      }
+      .header .texto {
+        width: 100%;
+        padding: 5px;
+      }
+      .dialogo {
+        width: 100%;
+        background-color: #808080;
+        background-image: linear-gradient(#708090,#2F4F4F);
+        padding: 15px;
+      }
+      .btn-group .button {
+        width: 100%;
+        background-color: white;
+        border: 1px white;
+        color: black;
+        padding: 5px;
+        text-align: left;
+        display: block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .btn-group .button:hover {
+        background-color: #4169E1;
+        color: white;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table {
+        width: 100%;
+      }
+      td {
+        padding: 5px;
+      }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Consulta <br><br>
+        <form method="get" action="/sparql">
+            <input class="texto" type="text" name="consultaLN" value="{{ consultaLN }}">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div class="dialogo">
+        {% for token in arrTokensDialogo %}
+            {% if token.Mapping|length > 1 %}
+                <div class="btn-group">
+                    <p style="color:white;">{{ token.Token }} ?</p>
+                    {% for mapping in token.Mapping %}
+                        <form method="get" action="/sparql">
+                            <input type="hidden" name="consultaLN" value="{{ consultaLN }}">
+                            <input type="hidden" name="prueba" value="{{ loop.index0 }}">
+                            <input type="hidden" name="indexToken" value="{{ loop.index }}">
+                            <input type="hidden" name="indexToken" value="{{ loop.index }}">
+                            <button class="button" type="submit">
+                                {{ mapping.Object.split('#')[-1] }}<br>
+                                CLASS: {{ mapping.Class.split('#')[-1] }}
+                            </button>
+                        </form>
+                    {% endfor %}
+                    
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        {% if resultados %}
+            <p>RESULTADOS</p>
+            <table>
+                {% for row in resultados %}
+                    <tr>
+                        {% for cell in row.values() %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>

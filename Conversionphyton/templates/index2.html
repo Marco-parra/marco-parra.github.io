@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Consulta NLP</title>
+</head>
+<body>
+	<!-- Formulario 1: selección de género -->
+	<form action="/sparql" method="GET">
+		<input type="radio" name="gender" value="male" checked> Male<br>
+		<input type="radio" name="gender" value="female"> Female<br>
+		<input type="radio" name="gender" value="other"> Other<br>
+		<input type="submit" value="Enviar género" />
+	</form>
+
+	<!-- Formulario 2: texto de consulta -->
+	<form action="/sparql" method="GET">
+		Consulta: <input type="text" name="consultaLN" />
+		<input type="submit" value="Enviar consulta" />
+	</form>
+</body>
+</html>
