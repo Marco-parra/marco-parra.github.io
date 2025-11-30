@@ -3,35 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a mi  Página de Trabajo</title>
+    <title>Portafolio de Marco Parra</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background: #f4f4f4;
             text-align: center;
         }
+
         header {
-            background-color: #333;
+            background: #333;
             color: #fff;
-            padding: 20px;
+            padding: 30px;
         }
+
         h1 {
             margin: 0;
         }
+
         .container {
-            width: 80%;
-            margin: auto;
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
             padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            background: #eee;
+            border-radius: 5px;
+        }
+
+        .card a:hover {
+            background: #ddd;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Bienvenido a mi Página de Trabajos</h1>
+        <h1>Portafolio de Proyectos</h1>
+        <p>Bienvenido, elige un proyecto para ver su contenido</p>
     </header>
+
     <div class="container">
-        <p>¡Marco Parra 190244!</p>
+
+        <div class="card">
+            <h3>Conversión Python</h3>
+            <p>Script o app para conversión de unidades.</p>
+            <a href="Conversionphyton/">Entrar</a>
+        </div>
+
+        <div class="card">
+            <h3>Ejercicios JavaScript</h3>
+            <p>Prácticas básicas de JS.</p>
+            <a href="Ejercicio-js/">Entrar</a>
+        </div>
+
+        <div class="card">
+            <h3>Práctica Alerta</h3>
+            <p>Ejemplo sencillo de interacción con alertas.</p>
+            <a href="practica_alerta/">Entrar</a>
+        </div>
+
+        <div class="card">
+            <h3>Proyecto AWS</h3>
+            <p>Práctica o demo con servicios en la nube.</p>
+            <a href="proyecto_aws/">Entrar</a>
+        </div>
+
+        <div class="card">
+            <h3>Bases Tesis</h3>
+            <p>Documentos o base para tu tesis.</p>
+            <a href="Bases tesis/">Entrar</a>
+        </div>
+
     </div>
 </body>
 </html>
